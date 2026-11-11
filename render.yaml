@@ -1,0 +1,29 @@
+# Render Blueprint: deploys the two APIs as two public web services.
+# Render dashboard -> New -> Blueprint -> select this GitHub repository.
+# The SQLite database is generated during the build (npm run seed), so no
+# external database is needed. Render injects PORT; the servers read it.
+services:
+  - type: web
+    name: rest-vs-graphql-rest
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run seed
+    startCommand: npm run start:rest
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+  - type: web
+    name: rest-vs-graphql-graphql
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run seed
+    startCommand: npm run start:graphql
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production

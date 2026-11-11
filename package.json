@@ -1,0 +1,27 @@
+{
+  "name": "rest-vs-graphql-benchmark",
+  "version": "1.0.0",
+  "description": "Controlled load-testing experiment comparing equivalent REST (Express) and GraphQL (Apollo Server) APIs under increasing concurrency.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "seed": "node --no-warnings src/db/seed.js",
+    "start:rest": "node --no-warnings src/rest/server.js",
+    "start:graphql": "node --no-warnings src/graphql/server.js",
+    "start:both": "node --no-warnings scripts/start-both.js",
+    "verify": "node --no-warnings scripts/verify-equivalence.js",
+    "bench": "node --no-warnings bench/run-experiment.js",
+    "test": "node --no-warnings --test"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "@as-integrations/express5": "^1.1.2",
+    "dataloader": "^2.2.3",
+    "express": "^5.1.0",
+    "graphql": "^16.11.0"
+  },
+  "license": "MIT"
+}

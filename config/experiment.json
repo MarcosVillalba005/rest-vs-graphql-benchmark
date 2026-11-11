@@ -1,0 +1,17 @@
+{
+  "apis": ["rest", "graphql"],
+  "scenarios": ["simple", "nested", "list"],
+  "vus": [1, 10, 50, 100, 200],
+  "repetitions": 10,
+  "warmupSeconds": 10,
+  "durationSeconds": 30,
+  "cooldownSeconds": 5,
+  "listLimit": 100,
+  "orderSeed": 2026,
+  "dataset": {
+    "seed": 42,
+    "users": 1000,
+    "postsPerUser": 10,
+    "commentsPerPost": 5
+  }
+}
